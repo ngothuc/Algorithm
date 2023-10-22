@@ -1,5 +1,8 @@
 #include<bits/stdc++.h>
 #define M 1000000007
+
+using namespace std;
+
 unsigned long long int a,b;
 unsigned long long int ExpMod(unsigned long long int x)
 {
