@@ -1,5 +1,7 @@
 #include<stdio.h>
 #include<limits.h>
+
+
 int n,k,N;
 int per[50]; //khack i co tren xe hay khong
 int mark[50]; //da di qia diem i hay chua
@@ -8,6 +10,8 @@ int a[50][50];
 int num;//so khach hien tai tren xe
 int min,ans,pos;//pos: vi tri hien tai
 int d;//quang duong
+
+
 void Input()
 {
 	min=ans=INT_MAX; pos=0; num=0; d=0;
