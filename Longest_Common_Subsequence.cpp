@@ -1,53 +1,42 @@
 #include<bits/stdc++.h>
-#define loop(i, a, b) for(int i = a; i <= b; i++)
-#define M 10001
 #define N 10001
+#define M 10001
+#define L 10001
+#define loop(i, a, b) for(int i = a; i <= b; i++)
+#define loopdown(i, a, b) for(int i = a; i >= b; i--)
 
 using namespace std;
 
 int x[N];
 int y[M];
-int m, n;
-int ans = INT_MIN;
-int val[N][M];
-
-void InitAns()
-{
-	loop(i, 1, n)
-		loop(j, 1, m)
-			val[i][j] = -1;
-}
-
-int LongestCommonS()
-{
-    loop(i, 0, n)
-        loop(j, 0, m)
-            val[i][j] = 0;
-
-    loop(i, 1, n)
-    {
-        loop(j, 1, m)
-        {
-            if (x[i] == y[j])
-                val[i][j] = val[i - 1][j - 1] + 1;
-            else
-                val[i][j] = max(val[i - 1][j], val[i][j - 1]);
-        }
-    }
-
-    return val[n][m];
-}
+int n, m;
+vector <int> id[L];
+int ans[L];
+int l = 0;
+int tmp;
 
 int main()
 {
-//	ios_base::sync_with_stdio(false);
-//	cin.tie(0); cout.tie(0);
-	freopen("ngothuc.txt", "r", stdin);
+	ios_base::sync_with_stdio();
+	cin.tie(0); cout.tie(0);
+	//freopen("ngothuc.txt", "r", stdin);
 	scanf("%d %d", &n, &m);
-	loop(i, 1, n) scanf("%d", x + i);
-	loop(i, 1, m) scanf("%d", y + i);
-	InitAns();
-	printf("%d", LongestCommonS());
+	loop(i, 0, n-1) scanf("%d", x + i);
+	loop(i, 0, m-1)
+	{
+		scanf("%d", y + i);
+		id[y[i]].push_back(i);
+	}
+	ans[l++] = -1;
+	loop(i, 0, n-1)
+	{
+		loopdown(j, id[x[i]].size() - 1, 0)
+		{
+			tmp = id[x[i]][j];
+			if(tmp > ans[l-1]) ans[l++] = tmp;
+			else ans[lower_bound(ans, ans + l, tmp) - ans] = tmp;
+		}
+	}
+	printf("%d", l - 1);
 	return 0;
 }
-
