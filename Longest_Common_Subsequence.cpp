@@ -18,28 +18,36 @@ void InitAns()
 			val[i][j] = -1;
 }
 
-int LongestCommonS(int i, int j)
+int LongestCommonS()
 {
-	if(val[i][j] != -1) return val[i][j];
-	if(i == 0 || j == 0) return 0;
-	if(x[i] == y[j])
-	{
-		val[i][j] = LongestCommonS(i-1, j-1) + 1;
-	}else{
-		val[i][j] = max(LongestCommonS(i-1, j), LongestCommonS(i, j-1));
-	}
-	return val[i][j];
+    loop(i, 0, n)
+        loop(j, 0, m)
+            val[i][j] = 0;
+
+    loop(i, 1, n)
+    {
+        loop(j, 1, m)
+        {
+            if (x[i] == y[j])
+                val[i][j] = val[i - 1][j - 1] + 1;
+            else
+                val[i][j] = max(val[i - 1][j], val[i][j - 1]);
+        }
+    }
+
+    return val[n][m];
 }
 
 int main()
 {
-	ios_base::sync_with_stdio();
-	cin.tie(0); cout.tie(0);
+//	ios_base::sync_with_stdio(false);
+//	cin.tie(0); cout.tie(0);
 	freopen("ngothuc.txt", "r", stdin);
-	cin >> n >> m;
-	loop(i, 1, n) cin >> x[i];
-	loop(i, 1, m) cin >> y[i];
+	scanf("%d %d", &n, &m);
+	loop(i, 1, n) scanf("%d", x + i);
+	loop(i, 1, m) scanf("%d", y + i);
 	InitAns();
-	cout << LongestCommonS(n, m);
+	printf("%d", LongestCommonS());
 	return 0;
 }
+
