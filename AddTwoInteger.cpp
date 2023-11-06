@@ -2,11 +2,11 @@
 
 using namespace std;
 
-int m=0;
+int m = 0;
 int max;
-int r1,r2;
+int r1, r2;
 string a,b;
-int u,v,c[20];
+int u, v, c[20];
 
 int main()
 {
