@@ -1,3 +1,9 @@
-AI
-Artificial Intelligence
-Recently, AI is a key technology. AI enable efficient operations in many fields.
+8 8
+1 2
+1 7
+1 8
+2 7
+4 5
+4 6
+5 6
+7 8
