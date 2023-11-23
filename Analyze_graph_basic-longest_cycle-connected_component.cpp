@@ -82,7 +82,7 @@ void Try(int k) {
 int main() {
 	ios_base::sync_with_stdio(0);
 	cin.tie(NULL); cout.tie(NULL);
-	freopen("ngothuc.txt", "r", stdin);
+	//freopen("ngothuc.txt", "r", stdin);
 
 	while(1) {
 		cin >> PointID;
